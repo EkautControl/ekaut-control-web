@@ -1,32 +1,12 @@
 .sidebar {
     min-width: 307px;
     height: 100%;
-    background: #D8D8D8;
-}
-
-.sidebar-router-item {
-    margin: 25px 0;
-}
-
-.sidebar-router-item a {
-    text-decoration: none;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-    color: #282828;
-}
-
-.logo-wrapper {
-    width: inherit;
-    height: 90px;
-    margin: 0 20px;
-    position: relative;
+    background: #0C113C;
+    align-content: center;
 }
 
 .logo {
-    margin: 20px;
+    margin: 50px 0px;
 }
 
 
