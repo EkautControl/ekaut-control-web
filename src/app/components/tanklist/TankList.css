@@ -1,0 +1,79 @@
+.tanklist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 15px 0 30px 0;
+}
+
+
+.card {
+    margin: 0 20px 20px 0;
+    background: #FFFFFF;
+    width: auto;
+    min-width: 220px;
+    max-width: 220px;
+    height: auto;
+    box-shadow: 0px 4px 4px rgba(168, 168, 168, 0.25);
+    border-radius: 15px;
+
+}
+
+.card > .card-header {
+    height: 42px;
+    width: inherit;
+    display: flex;
+    align-items: center;
+    margin: 17px 20px 0 12px;
+}
+
+.card-header> .header-value  {
+    font-size: 42px;
+    height: 100%;
+    line-height: 1;
+    margin-right: 7px;
+}
+
+.card-header > .title-box {
+    height: 100%;
+    display: block;
+}
+
+.title-box > .title {
+    font-size: 18px;
+    /* identical to box height */
+    text-transform: uppercase;
+    line-height: 10px;
+    font-size-adjust: 0.58;
+}
+
+.title-box > .subtitle {
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 25px;
+}
+
+.divider.card-divider {
+    width: 55%;
+    margin: 4px auto;
+    opacity: 50%;
+}
+.card > .description {
+    margin: 5px 12px;
+    font-size: 10px;
+}
+
+.card > .footer {
+    background: #8D95B9;
+    box-shadow: 0px 4px 4px rgba(168, 168, 168, 0.25);
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+    padding: 6px;
+}
+
+.card > .footer > p {
+    font-size: 13px;
+    line-height: 18px;
+    color: #ffffff;
+}
+
+

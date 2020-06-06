@@ -5,7 +5,16 @@ import PropTypes from 'prop-types';
 import "./Header.css"
 
 //Components
-import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/core/styles/withStyles";
+
+//Assets
+import notification from '../../../assets/notification.svg'
+
+//Components
+import IconButton from "@material-ui/core/IconButton";
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import {ButtonAlert} from "../widgets/Widgets";
 
 class Header extends Component {
 
@@ -14,13 +23,42 @@ class Header extends Component {
 
         return (
             <div className="header">
-                <div className="container">
-                    <p className="header-title">{title}</p>
+                <div className="container w-100">
+                    <div className="header-menu">
+                        <ButtonAlert
+                            startIcon={<InfoOutlinedIcon/>}
+                            variant="contained"
+                            color="primary"
+                            size="xl">REPORTAR PROBLEMA</ButtonAlert>
+                        <IconButton>
+                            <NotificationButton/>
+                        </IconButton>
+
+                        <ProfileButton color="primary"/>
+                    </div>
                 </div>
-                <div className="divider horizontal absolute bottom-0"/>
             </div>
         );
     }
+}
+
+const NotificationButton = () => {
+    return (
+        <div className="notification-btn">
+            <img src={notification}/>
+            <div className="notification-count">
+                2
+            </div>
+        </div>
+    )
+}
+
+const ProfileButton = () => {
+    return (
+        <div className="profile-btn">
+
+        </div>
+    )
 }
 
 Header.propTypes = {

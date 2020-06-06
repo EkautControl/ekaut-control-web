@@ -10,6 +10,9 @@ import './Home.css'
 //Routing
 import {Switch, Route} from "react-router-dom";
 
+//Components
+import BeerHouse from "../beerhouse/BeerHouse";
+
 class Home extends Component {
 
     constructor(props) {
@@ -17,18 +20,21 @@ class Home extends Component {
 
         this.routes = [
             {
-                name: "CONTROLE DA ADEGA",
-                path: "/beerhouse",
+                name: "Controle dos tanques",
+                path: "/",
                 exact: true,
+                children: (props) => <BeerHouse title={props.title}/>
 
             },
             {
-                name: "HISTÓRICO DE ATIVIDADES",
+                name: "Histórico de atividades",
                 path: "/history",
+                children: (props) => (<p>{props.name}</p>)
             },
             {
-                name: "CERVEJAS",
+                name: "Informações das cervejas",
                 path: "/beers",
+                children: (props) => (<p>{props.name}</p>)
             }
         ]
     }
@@ -50,6 +56,20 @@ class Home extends Component {
                             ))
                         }
                     </Switch>
+                    <Switch>
+                        {
+                            this.routes.map((route, index) => (
+                                <Route
+                                    key={index}
+                                    path={route.path}
+                                    exact={route.exact}
+                                    render={() => <route.children title={route.name}/>}
+                                    title={route.name}
+                                />
+                            ))
+                        }
+                    </Switch>
+
                 </div>
 
             </div>

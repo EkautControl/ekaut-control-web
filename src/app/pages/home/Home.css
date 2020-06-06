@@ -1,14 +1,37 @@
 .home {
     height: inherit;
+    width: inherit;
     display: flex;
     flex-direction: row;
 }
 
 .home-wrapper {
     display: inline;
+    height: inherit;
+    width: 100%;
+    overflow: scroll;
+}
+
+.title {
+    font-size: 38px;
+    margin-right: auto;
+    color: rgba(0, 0, 0, 0.68);
+}
+
+.home-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 .container {
-    margin: 0 43px;
-    text-align: left;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0px 80px;
+}
+
+.container.w-100 {
+    width: 100%;
+}
+
+.container.sm {
+    padding: 0px 37px !important;
 }
