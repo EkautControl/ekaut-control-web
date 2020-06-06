@@ -1,0 +1,14 @@
+.home {
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+}
+
+.home-wrapper {
+    display: inline;
+}
+
+.container {
+    margin: 0 43px;
+    text-align: left;
+}
