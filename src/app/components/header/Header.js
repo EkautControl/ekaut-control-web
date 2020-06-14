@@ -4,17 +4,13 @@ import PropTypes from 'prop-types';
 //Css
 import "./Header.css"
 
-//Components
-import Button from "@material-ui/core/Button";
-import withStyles from "@material-ui/core/styles/withStyles";
-
 //Assets
 import notification from '../../../assets/notification.svg'
 
 //Components
 import IconButton from "@material-ui/core/IconButton";
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import {ButtonAlert} from "../widgets/Widgets";
+import {ButtonAlert} from "../widgets/Buttons";
 
 class Header extends Component {
 
