@@ -12,6 +12,7 @@ import {Switch, Route} from "react-router-dom";
 
 //Components
 import BeerHouse from "../beerhouse/BeerHouse";
+import BeerInformation from "../beerInformation/BeerInformation";
 
 class Home extends Component {
 
@@ -28,13 +29,13 @@ class Home extends Component {
             },
             {
                 name: "Histórico de atividades",
-                path: "/history",
+                path: "/historico",
                 children: (props) => (<p>{props.name}</p>)
             },
             {
                 name: "Informações das cervejas",
-                path: "/beers",
-                children: (props) => (<p>{props.name}</p>)
+                path: "/cervejas",
+                children: (props) => <BeerInformation title={props.title}/>
             }
         ]
     }
