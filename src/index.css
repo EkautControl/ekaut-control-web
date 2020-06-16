@@ -29,7 +29,7 @@ code {
     monospace;
 }
 
-p {
+p , h2, label{
   font-family: "Open Sans";
   font-weight: bold ;
   margin: 0px;
