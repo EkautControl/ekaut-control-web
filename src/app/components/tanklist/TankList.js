@@ -28,7 +28,9 @@ const Tank = (props) => {
             <div className="card-header">
                 <p className="header-value">{tank}</p>
                 <div className="title-box">
-                    <p className="subtitle">{beer === undefined ?"--" : beer.brewery} | LOTE {production.batch}</p>
+                    <p className="subtitle">
+                        {beer === undefined ?"--" : beer.brewery} | LOTE {production.batch}
+                    </p>
                     <p className="title">{beer === undefined ?"--" :beer.name}</p>
                 </div>
             </div>
