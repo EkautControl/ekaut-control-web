@@ -10,7 +10,6 @@ import {fetchActiveTanks, fetchInactiveTanks, fetchBeers, submitProduction} from
 import {connect} from "react-redux";
 
 //Components
-import TankList from "../../components/tanklist/TankList";
 import {ButtonPrimary} from "../../components/widgets/Buttons";
 import AddIcon from '@material-ui/icons/Add';
 import {FormDialog} from "../../components/widgets/Dialog";
@@ -20,6 +19,7 @@ import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 import DatePicker from "../../components/widgets/DatePicker";
 import PHASES from "../../constants/phases";
+import TankList from "../../components/tanklist/TankList";
 
 class BeerHouse extends Component {
 
@@ -61,7 +61,7 @@ class BeerHouse extends Component {
 
     render() {
         const {productionFormOpen} = this.state
-        const {tanksWithProblem, activeTanks} = this.props
+        const {tanksWithProblem, activeTanks, inactiveTanks, beers} = this.props
 
         return (
             <div className="beerhouse container">
@@ -75,9 +75,10 @@ class BeerHouse extends Component {
 
                 <p>TANQUES EM PROGRESSO</p>
                 <TankList tanks={activeTanks}/>
+
                 <NewProductionForm
-                    tanks={this.props.inactiveTanks}
-                    beers={this.props.beers}
+                    tanks={inactiveTanks}
+                    beers={beers}
                     open={productionFormOpen}
                     onCanceled={this.handleNewProductionCanceled}
                     handleSubmit={this.handleNewProductionSubmission}/>
@@ -90,6 +91,7 @@ const NewProductionForm = (props) => {
     const {tanks, beers} = props
     const production = {batch: 0}
 
+    console.log(tanks)
     const handleInput = (evt) => {
         let value = evt.target.value
         production[evt.target.name] = (isNaN(value) ? value : parseInt(value))

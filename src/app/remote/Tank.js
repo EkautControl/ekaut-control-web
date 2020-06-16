@@ -16,3 +16,4 @@ export const submitProduction = (production) => {
     const path = "/production"
     return axios.post(api + path, production)
 }
+

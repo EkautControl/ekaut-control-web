@@ -46,7 +46,6 @@ const BeerHouseSlice = createSlice({
         inactiveTanks: [],
         tanksWithProblem: [],
         beers: [],
-
     },
     reducers: {
 
@@ -71,11 +70,9 @@ const BeerHouseSlice = createSlice({
             state.beers = action.payload
         },
         [submitProduction.fulfilled]: (state, action) => {
-            state.inactiveTanks = action.payload
-        },
-        [submitProduction.fulfilled]: (state, action) => {
             state.activeTanks.push(action.payload)
         }
+
     }
 })
 
