@@ -16,14 +16,23 @@ export const fetchBeers = createAsyncThunk(
 const BeersSlice = createSlice({
     name: name,
     initialState: {
-        beers: [],
+        activeBeers: [],
+        inactiveBeers: [],
     },
     reducers: {
 
     },
     extraReducers: {
         [fetchBeers.fulfilled]: (state, action) => {
-            state.beers = action.payload;
+            const activeBeers = [];
+            const inactiveBeers = [];
+
+            action.payload.forEach(beer => {
+                beer.active ? activeBeers.push(beer) : inactiveBeers.push(beer);
+            })
+            
+            state.activeBeers = activeBeers;
+            state.inactiveBeers = inactiveBeers;
         }
     }
 })

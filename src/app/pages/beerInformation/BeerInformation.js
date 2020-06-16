@@ -52,14 +52,10 @@ function mapDispatchToProp(dispatcher) {
 }
 
 function mapStateToProps(state) {
-    const activeBeers = [];
-    const inactiveBeers = [];
-
-    state.beerInformation.beers.forEach(beer => {
-        beer.active ? activeBeers.push(beer) : inactiveBeers.push(beer);
+    return ({
+        activeBeers: state.beerInformation.activeBeers,
+        inactiveBeers: state.beerInformation.inactiveBeers,
     });
-
-    return { activeBeers, inactiveBeers };
 }
 
 export default connect(mapStateToProps, mapDispatchToProp)(BeerInformation)
