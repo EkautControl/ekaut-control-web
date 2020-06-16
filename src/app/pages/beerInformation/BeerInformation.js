@@ -8,7 +8,7 @@ import {fetchBeers} from "./BeerInformationSlice";
 
 //Components
 import BeerList from "../../components/beerlist/BeerList";
-import {ButtonPrimary} from "../../components/widgets/Widgets";
+import {ButtonPrimary} from "../../components/widgets/Buttons";
 import AddIcon from '@material-ui/icons/Add';
 
 //Redux

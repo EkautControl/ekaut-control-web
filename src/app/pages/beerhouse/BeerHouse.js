@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import './BeerHouse.css'
 
 //Slice
-import {fetchTanks} from "./BeerHouseSlice";
+import {fetchActiveTanks, fetchInactiveTanks} from "./BeerHouseSlice";
 
 //Components
 import TankList from "../../components/tanklist/TankList";
@@ -37,7 +37,10 @@ class BeerHouse extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchTanks()
+        this.props.fetchActiveTanks()
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log(this.props)
     }
 
     handleNewProductionClick() {
@@ -54,6 +57,7 @@ class BeerHouse extends Component {
 
     render() {
         const {productionFormOpen} = this.state
+        const {tanksWithProblem, activeTanks} = this.props
 
         return (
             <div className="beerhouse container">
@@ -63,11 +67,12 @@ class BeerHouse extends Component {
                                    startIcon={<AddIcon/>}>NOVA PRODUÇÂO</ButtonPrimary>
                 </div>
                 <p>TANQUES EM ALERTA</p>
-                <TankList/>
-                <p>TANQUES</p>
-                <TankList/>
+                <TankList tanks={tanksWithProblem}/>
+
+                <p>TANQUES EM PROGRESSO</p>
+                <TankList tanks={activeTanks}/>
                 <NewProductionForm open={productionFormOpen}
-                                   onCanceled={this.handleNewProductionCanceled}/>
+                   onCanceled={this.handleNewProductionCanceled}/>
             </div>
         );
     }
@@ -105,13 +110,14 @@ const NewProductionForm = (props) => {
 
 function mapDispatchToProp(dispatcher) {
     return ({
-        fetchTanks: () => dispatcher(fetchTanks())
+        fetchActiveTanks: () => dispatcher(fetchActiveTanks()),
     })
 }
 
 function mapStateToProps(state) {
     return ({
-        activeTanks: state.beerHouse.activeTanks
+        activeTanks: state.beerHouse.activeTanks,
+        tanksWithProblem: state.beerHouse.tanksWithProblem,
     })
 }
 

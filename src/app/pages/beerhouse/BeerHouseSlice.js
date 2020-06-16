@@ -5,8 +5,8 @@ import {getActiveTanks} from "../../remote/Tank";
 
 const name = "beerhouse"
 
-export const fetchTanks = createAsyncThunk(
-    name + "/FetchTanks",
+export const fetchActiveTanks = createAsyncThunk(
+    name + "/FetchActiveTanks",
     async () => {
         const result = await getActiveTanks()
         return result.data
@@ -16,14 +16,27 @@ export const fetchTanks = createAsyncThunk(
 const BeerHouseSlice = createSlice({
     name: name,
     initialState: {
-        activeTanks: []
+        activeTanks: [],
+        tanksWithProblem: []
     },
     reducers: {
 
     },
     extraReducers: {
-        [fetchTanks.fulfilled]: (state, action) => {
-            state.activeTanks = action.payload
+        [fetchActiveTanks.fulfilled]: (state, action) => {
+            let activeTanks = []
+            let tanksWithProblem = []
+            action.payload.map(tank => {
+
+                if (tank.production.hasProblem) {
+                    tanksWithProblem.push(tank)
+                } else {
+                    activeTanks.push(tank)
+                }
+
+            })
+            state.activeTanks = activeTanks
+            state.tanksWithProblem = tanksWithProblem
         }
     }
 })

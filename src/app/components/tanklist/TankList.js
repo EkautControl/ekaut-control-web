@@ -6,24 +6,23 @@ import "./TankList.css"
 function TankList (props) {
     return (
         <div className="tanklist">
-            <Tank/>
-            <Tank/>
-            <Tank/>
-            <Tank/>
-            <Tank/>
-
+            {
+                props.tanks.map(tank => (<Tank tank={tank}/>))
+            }
         </div>
     );
 }
 
 const Tank = (props) => {
+    const {tank, beer, production} = props.tank
+
     return (
         <div className="card">
             <div className="card-header">
-                <p className="header-value">05</p>
+                <p className="header-value">{tank}</p>
                 <div className="title-box">
-                    <p className="subtitle">EKAULT | LOTE 5</p>
-                    <p className="title">AMERICAN ipa </p>
+                    <p className="subtitle">{beer.brewery} | LOTE {production.batch}</p>
+                    <p className="title">{beer.name}</p>
                 </div>
             </div>
             <div className="divider horizontal card-divider"/>

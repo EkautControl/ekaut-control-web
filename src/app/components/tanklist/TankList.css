@@ -50,6 +50,7 @@
     font-weight: normal;
     font-size: 11px;
     line-height: 25px;
+    text-transform: uppercase;
 }
 
 .divider.card-divider {
