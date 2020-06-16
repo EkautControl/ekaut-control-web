@@ -41,3 +41,7 @@ p > ins {
   text-decoration: none;
   font-weight: normal;
 }
+
+a {
+  text-decoration: none;
+}

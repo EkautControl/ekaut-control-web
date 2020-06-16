@@ -1,0 +1,45 @@
+.beer-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 15px 0 30px 0;
+}
+
+.beer-card {
+    margin: 0 20px 20px 0;
+    background: #FFFFFF;
+    width: auto;
+    min-width: 220px;
+    max-width: 220px;
+    box-shadow: 0px 4px 4px rgba(168, 168, 168, 0.25);
+    border-radius: 15px;
+
+}
+
+.beer-card > .card-header {
+    background: #35A1F4;
+    box-shadow: 0px 4px 4px rgba(168, 168, 168, 0.25);
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+}
+
+.beer-card > .ekaut {
+    background: #E47E00;
+}
+
+.beer-card > .inactive {
+    background: #B0B0B0;
+}
+
+.card-header > .card-title {
+    width: 100%;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 8px 0;
+    font-size: 18px;
+}
+
+.card-body {
+    padding: 12px 15px;
+    font-size: 11px;
+}
