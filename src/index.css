@@ -45,3 +45,21 @@ p > ins {
 a {
   text-decoration: none;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+  color: transparent;
+
+}
+
+input[type="date"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+   color: transparent;
+
+ }
+
+::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+  color: transparent;
+}

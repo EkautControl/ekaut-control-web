@@ -35,7 +35,7 @@ class Sidebar extends Component {
         return (
             <div className="sidebar">
                 <div className="container sm">
-                    <img className="logo" src={logo}/>
+                    <img alt="Ekault Control" className="logo" src={logo}/>
                     <SidebarTab
                         orientation="vertical"
                         variant="scrollable"
@@ -46,8 +46,9 @@ class Sidebar extends Component {
                     >
                         {
                             routes &&
-                            routes.map(route => (
+                            routes.map((route, key) => (
                                 <TabItem
+                                    key={key}
                                     label={
                                         <Link to={route.path}>{route.name}</Link>
                                     }>

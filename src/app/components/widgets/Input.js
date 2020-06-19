@@ -11,10 +11,10 @@ import Select from "@material-ui/core/Select";
 
 const InputLabelBase = withStyles((theme) => ({
     root:{
-        color: "#475198",
+        color: "#475198 !important",
         fontWeight: 'bold',
         fontSize: '19px',
-        lineHeight: '19px'
+        lineHeight: '19px',
     }
 }))(InputLabel)
 
@@ -33,22 +33,30 @@ const TextInputBase = withStyles((theme) => ({
     },
 }))(InputBase);
 
+const InputContainer = (props) => {
+    return (
+        <FormControl fullWidth={true}>
+            <InputLabelBase shrink>{props.title}</InputLabelBase>
+            {props.children}
+        </FormControl>
+    )
+}
 const TextInput = (props) => {
     return (
-        <FormControl fullWidth="true">
-            <InputLabelBase shrink htmlFor="text-input">{props.children}</InputLabelBase>
-            <TextInputBase id="text-input"/>
-        </FormControl>
+        <InputContainer title={props.title}>
+            <TextInputBase {...props}/>
+        </InputContainer>
     )
 }
 
 const SelectInput = (props) => {
     return (
-        <FormControl fullWidth="true">
-            <InputLabelBase shrink htmlFor="text-input">{props.children}</InputLabelBase>
-            <Select input={<TextInputBase id="text-input"/>}/>
-        </FormControl>
+        <InputContainer title={props.title}>
+            <Select input={<TextInputBase/>} {...props}>
+                {props.children}
+            </Select>
+        </InputContainer>
     )
 }
 
-export {TextInput, SelectInput}
+export {TextInput, SelectInput, InputLabelBase}

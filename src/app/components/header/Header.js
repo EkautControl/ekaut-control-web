@@ -15,8 +15,6 @@ import {ButtonAlert} from "../widgets/Buttons";
 class Header extends Component {
 
     render() {
-        const {title} = this.props
-
         return (
             <div className="header">
                 <div className="container w-100">
@@ -24,8 +22,7 @@ class Header extends Component {
                         <ButtonAlert
                             startIcon={<InfoOutlinedIcon/>}
                             variant="contained"
-                            color="primary"
-                            size="xl">REPORTAR PROBLEMA</ButtonAlert>
+                            color="primary">REPORTAR PROBLEMA</ButtonAlert>
                         <IconButton>
                             <NotificationButton/>
                         </IconButton>
@@ -41,7 +38,7 @@ class Header extends Component {
 const NotificationButton = () => {
     return (
         <div className="notification-btn">
-            <img src={notification}/>
+            <img alt="Notifications" src={notification}/>
             <div className="notification-count">
                 2
             </div>

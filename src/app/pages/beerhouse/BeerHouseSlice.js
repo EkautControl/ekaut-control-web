@@ -1,7 +1,8 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
 //API
-import {getActiveTanks} from "../../remote/Tank";
+import {getActiveTanks, getInactiveTanks, submitProduction as _submitProduction} from "../../remote/Tank";
+import {listBeers} from "../../remote/Beers";
 
 const name = "beerhouse"
 
@@ -13,30 +14,67 @@ export const fetchActiveTanks = createAsyncThunk(
     }
 );
 
+export const fetchInactiveTanks = createAsyncThunk(
+    name + "/FetchInactiveTanks",
+    async () => {
+        const result = await getInactiveTanks()
+        return result.data
+    }
+);
+
+export const fetchBeers = createAsyncThunk(
+    name + "/FetchBeer",
+    async () => {
+        const result = await listBeers()
+        return result.data
+    }
+);
+
+export const submitProduction = createAsyncThunk(
+    name + "/SubmitProduction",
+    async (production) => {
+        const result = await _submitProduction(production)
+        return result.data
+    }
+);
+
+
 const BeerHouseSlice = createSlice({
     name: name,
     initialState: {
         activeTanks: [],
-        tanksWithProblem: []
+        inactiveTanks: [],
+        tanksWithProblem: [],
+        beers: [],
+
     },
     reducers: {
 
     },
     extraReducers: {
         [fetchActiveTanks.fulfilled]: (state, action) => {
-            let activeTanks = []
-            let tanksWithProblem = []
-            action.payload.map(tank => {
+            state.activeTanks = []
+            state.tanksWithProblem = []
 
+            action.payload.forEach(tank => {
                 if (tank.production.hasProblem) {
-                    tanksWithProblem.push(tank)
+                    state.tanksWithProblem = [...state.tanksWithProblem, tank]
                 } else {
-                    activeTanks.push(tank)
+                    state.activeTanks = [...state.activeTanks, tank]
                 }
-
             })
-            state.activeTanks = activeTanks
-            state.tanksWithProblem = tanksWithProblem
+        },
+        [fetchInactiveTanks.fulfilled]: (state, action) => {
+           state.inactiveTanks = action.payload
+        },
+        [fetchBeers.fulfilled]: (state, action) => {
+            state.beers = action.payload
+        },
+        [submitProduction.fulfilled]: (state, action) => {
+            state.inactiveTanks = action.payload
+        },
+        [submitProduction.fulfilled]: (state, action) => {
+            state.activeTanks.push(action.payload)
         }
     }
 })
