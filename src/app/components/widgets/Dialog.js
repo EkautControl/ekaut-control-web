@@ -30,10 +30,6 @@ const DialogContent = withStyles(() => ({
 
 class FormDialog extends React.Component{
 
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         const {props} = this
 
